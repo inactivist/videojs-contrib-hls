@@ -401,6 +401,15 @@ var
       fillBuffer(currentTime * 1000);
     });
 
+    player.one('ready', function() {
+      console.log('ready');
+      var liveButton = new videojs.LiveButton(player);
+          liveButton.buttonText = 'LIVE';
+          liveButton.addClass('vjs-live-button');
+
+      player.controlBar.addChild(liveButton);
+    });
+
     /**
      * Determine whether the current media playlist should be changed
      * and trigger a switch if necessary. If a sufficiently fresh

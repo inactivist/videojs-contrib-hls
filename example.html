@@ -26,7 +26,10 @@
   <!-- m3u8 handling -->
   <script src="src/stream.js"></script>
   <script src="src/m3u8/m3u8-parser.js"></script>
-  
+
+	<!-- UI -->
+	<script src="src/live-button.js"></script>
+
   <!-- example MPEG2-TS segments -->
   <!-- bipbop -->
   <!-- <script src="test/tsSegment.js"></script> -->
@@ -43,6 +46,13 @@
       border-radius: 3px;
       padding: 0 5px;
     }
+
+	  .vjs-control .vjs-live-button {
+		  width: 5em;
+		  cursor: pointer;
+		  float: right;
+		  background: #FFCC00;
+	  }
   </style>
 
 </head>
@@ -61,12 +71,17 @@
        type="application/x-mpegURL">
   </video>
   <script>
-    videojs.options.flash.swf = 'node_modules/videojs-swf/dist/video-js.swf';
+	  //http://localhost:9999/test/manifest/missingEndlist.m3u8
+	  //http://solutions.brightcove.com/jwhisenant/hls/apple/bipbop/bipbopall.m3u8
+
+	  videojs.options.flash.swf = 'node_modules/videojs-swf/dist/video-js.swf';
     // initialize the player
     var player = videojs('video');
 
     // initialize the plugin
     player.hls();
+
+	  player.controlBar.show();
   </script>
 </body>
 </html>
